@@ -28,7 +28,7 @@ export const Contact: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-[10px] uppercase tracking-widest text-[#1a1a1a]/40 font-bold">Call Us</p>
-                  <p className="text-xl font-serif font-bold text-[#1a1a1a]">+91 98765 43210</p>
+                  <p className="text-xl font-serif font-bold text-[#1a1a1a]">+91 7569262463</p>
                 </div>
               </div>
               <div className="flex items-center gap-6 group cursor-pointer">
@@ -37,7 +37,7 @@ export const Contact: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-[10px] uppercase tracking-widest text-[#1a1a1a]/40 font-bold">Email Us</p>
-                  <p className="text-xl font-serif font-bold text-[#1a1a1a]">hello@greenhaven.com</p>
+                  <p className="text-xl font-serif font-bold text-[#1a1a1a]">shashikumar@gmail.com</p>
                 </div>
               </div>
               <div className="flex items-center gap-6 group cursor-pointer">
@@ -46,15 +46,15 @@ export const Contact: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-[10px] uppercase tracking-widest text-[#1a1a1a]/40 font-bold">Location</p>
-                  <p className="text-xl font-serif font-bold text-[#1a1a1a]">Green Valley, Village Road, Pune</p>
+                  <p className="text-xl font-serif font-bold text-[#1a1a1a]">Hanmakonda Room</p>
                 </div>
               </div>
             </div>
 
             <div className="flex gap-4 mt-16">
-              <button className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center hover:bg-white transition-all text-[#1a1a1a]/60 hover:text-[#5A5A40]">
+              <a href="https://www.instagram.com/its_kumardora_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center hover:bg-white transition-all text-[#1a1a1a]/60 hover:text-[#5A5A40]">
                 <Instagram size={20} />
-              </button>
+              </a>
               <button className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center hover:bg-white transition-all text-[#1a1a1a]/60 hover:text-[#5A5A40]">
                 <Facebook size={20} />
               </button>
@@ -105,7 +105,7 @@ export const Contact: React.FC = () => {
 
       {/* WhatsApp Floating Button */}
       <motion.a
-        href="https://wa.me/919876543210"
+        href="https://wa.me/917569262463"
         target="_blank"
         rel="noopener noreferrer"
         initial={{ scale: 0 }}

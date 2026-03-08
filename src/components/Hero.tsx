@@ -12,12 +12,6 @@ export const Hero: React.FC = () => {
         transition={{ duration: 10, ease: "linear", repeat: Infinity, repeatType: "reverse" }}
         className="absolute inset-0 z-0"
       >
-        <img 
-          src="https://images.unsplash.com/photo-1540333032274-573bd2df0a6f?auto=format&fit=crop&q=80&w=2000" 
-          alt="Resort Aerial View" 
-          className="w-full h-full object-cover opacity-80"
-          referrerPolicy="no-referrer"
-        />
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-[#f5f2ed]" />
       </motion.div>
 
@@ -69,7 +63,10 @@ export const Hero: React.FC = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button className="group bg-[#5A5A40] text-white px-10 py-5 rounded-full text-lg font-medium hover:bg-[#4a4a34] transition-all shadow-xl flex items-center gap-2">
+            <button 
+              onClick={() => window.dispatchEvent(new Event('openBooking'))}
+              className="group bg-[#5A5A40] text-white px-10 py-5 rounded-full text-lg font-medium hover:bg-[#4a4a34] transition-all shadow-xl flex items-center gap-2"
+            >
               Check Availability
               <ChevronRight className="group-hover:translate-x-1 transition-transform" />
             </button>

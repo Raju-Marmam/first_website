@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { DayPicker } from 'react-day-picker';
 import { format } from 'date-fns';
@@ -17,6 +17,12 @@ export const BookingSystem: React.FC = () => {
     roomType: 'Duplex AC Room',
     eventType: 'Stay Only'
   });
+
+  useEffect(() => {
+    const handleOpenBooking = () => setIsOpen(true);
+    window.addEventListener('openBooking', handleOpenBooking);
+    return () => window.removeEventListener('openBooking', handleOpenBooking);
+  }, []);
 
   const handleBooking = (e: React.FormEvent) => {
     e.preventDefault();
