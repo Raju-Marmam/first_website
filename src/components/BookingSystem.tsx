@@ -36,38 +36,48 @@ export const BookingSystem: React.FC = () => {
 
     if (step === 3 && paymentMethod) {
       setIsLoading(true);
-      try {
-        const response = await fetch('http://localhost:3001/api/bookings', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
+      
+      // MOCK BACKEND: Save to localStorage instead of API
+      setTimeout(() => {
+        try {
+          const newBooking = {
+            id: Date.now(),
             ...formData,
             checkIn: selectedRange.from ? selectedRange.from.toISOString() : '',
             checkOut: selectedRange.to ? selectedRange.to.toISOString() : '',
-            paymentMethod
-          }),
-        });
-        
-        const data = await response.json();
-        
-        if (data.success) {
+            paymentMethod,
+            status: paymentMethod ? 'Advance Paid' : 'New Inquiry',
+            created_at: new Date().toISOString()
+          };
+          
+          const existingBookingsStr = localStorage.getItem('ghvr_bookings');
+          const existingBookings = existingBookingsStr ? JSON.parse(existingBookingsStr) : [];
+          
+          localStorage.setItem('ghvr_bookings', JSON.stringify([newBooking, ...existingBookings]));
+          
           setStep(4); // Show success
+          
           setTimeout(() => {
             setIsOpen(false);
             setStep(1);
             setPaymentMethod('');
+            setFormData({
+              name: '',
+              phone: '',
+              email: '',
+              guests: 2,
+              roomType: 'Duplex AC Room',
+              eventType: 'Stay Only'
+            });
           }, 4000);
-        } else {
-          alert("Error submitting booking");
+
+        } catch (error) {
+          console.error("Booking error", error);
+          alert("Failed to save booking");
+        } finally {
+          setIsLoading(false);
         }
-      } catch (error) {
-        console.error("Booking error", error);
-        alert("Failed to connect to server");
-      } finally {
-        setIsLoading(false);
-      }
+      }, 1500); // Simulate network delay
     }
   };
 

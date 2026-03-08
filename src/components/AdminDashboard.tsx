@@ -24,41 +24,44 @@ export const AdminDashboard: React.FC = () => {
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchBookings = async () => {
+  const fetchBookings = () => {
     setIsLoading(true);
-    try {
-      const response = await fetch('http://localhost:3001/api/admin/bookings');
-      const data = await response.json();
-      if (data.success) {
-        setBookings(data.bookings);
+    // Simulate network delay
+    setTimeout(() => {
+      try {
+        const existingBookingsStr = localStorage.getItem('ghvr_bookings');
+        if (existingBookingsStr) {
+          const parsed = JSON.parse(existingBookingsStr);
+          // Sort by date descending (newest first)
+          parsed.sort((a: Booking, b: Booking) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+          setBookings(parsed);
+        } else {
+          setBookings([]);
+        }
+      } catch (error) {
+        console.error('Failed to fetch bookings:', error);
+      } finally {
+        setIsLoading(false);
       }
-    } catch (error) {
-      console.error('Failed to fetch bookings:', error);
-      alert('Could not connect to the database. Ensure the backend server is running on port 3001.');
-    } finally {
-      setIsLoading(false);
-    }
+    }, 800);
   };
 
   useEffect(() => {
     fetchBookings();
   }, []);
 
-  const handleStatusChange = async (id: number, newStatus: string) => {
+  const handleStatusChange = (id: number, newStatus: string) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/admin/bookings/${id}/status`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status: newStatus }),
-      });
-      const data = await response.json();
-      if (data.success) {
-        setBookings(bookings.map(b => b.id === id ? { ...b, status: newStatus } : b));
-      } else {
-        alert('Failed to update status');
+      const existingBookingsStr = localStorage.getItem('ghvr_bookings');
+      if (existingBookingsStr) {
+        let parsed: Booking[] = JSON.parse(existingBookingsStr);
+        parsed = parsed.map(b => b.id === id ? { ...b, status: newStatus } : b);
+        localStorage.setItem('ghvr_bookings', JSON.stringify(parsed));
+        setBookings(parsed);
       }
     } catch (error) {
       console.error('Error updating status:', error);
+      alert('Failed to update status');
     }
   };
 
