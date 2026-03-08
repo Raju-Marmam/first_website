@@ -60,7 +60,7 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {!showIntro && window.location.pathname !== '/admin' && (
+      {!showIntro && !window.location.pathname.endsWith('/admin') && (
         <AncientScrollBackground>
           <motion.div
             initial={{ opacity: 0 }}
@@ -83,7 +83,7 @@ export default function App() {
         </AncientScrollBackground>
       )}
 
-      {window.location.pathname === '/admin' && <AdminDashboard />}
+      {window.location.pathname.endsWith('/admin') && <AdminDashboard />}
     </div>
   );
 }
