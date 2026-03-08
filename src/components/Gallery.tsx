@@ -6,7 +6,6 @@ import { cn } from '../utils/cn';
 const categories = ['All', 'Resort', 'Rooms', 'Pool', 'Weddings', 'Activities'];
 
 const photos = [
-  { id: 1, category: 'Resort', url: 'https://images.unsplash.com/photo-1540333032274-573bd2df0a6f?auto=format&fit=crop&q=80&w=800', title: 'Aerial View' },
   { id: 2, category: 'Rooms', url: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&q=80&w=800', title: 'Premium Duplex' },
   { id: 3, category: 'Pool', url: 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&q=80&w=800', title: 'Infinity Pool' },
   { id: 4, category: 'Weddings', url: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800', title: 'Lawn Setup' },

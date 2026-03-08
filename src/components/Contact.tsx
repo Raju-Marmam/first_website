@@ -134,10 +134,10 @@ export const Footer: React.FC = () => {
               <div className="w-10 h-10 bg-[#5A5A40] rounded-full flex items-center justify-center text-white text-xl">
                 🌿
               </div>
-              <span className="font-serif font-bold text-2xl tracking-tight">Green Haven</span>
+              <span className="font-serif font-bold text-2xl tracking-tight">Shashi Kumar Resort</span>
             </div>
             <p className="text-white/40 max-w-sm leading-relaxed">
-              Green Haven Village Resort is your premier destination for weddings and celebrations. 
+              Shashi Kumar Resort is your premier destination for weddings and celebrations. 
               We blend traditional village charm with modern luxury to create unforgettable memories.
             </p>
           </div>
@@ -166,7 +166,7 @@ export const Footer: React.FC = () => {
 
         <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-white/20 text-xs">
-            © 2026 Green Haven Village Resort. All rights reserved.
+            © 2026 Shashi Kumar Resort. All rights reserved.
           </p>
           <div className="flex gap-8 text-white/20 text-xs uppercase tracking-widest font-bold">
             <span>Designed with ❤️ for Celebrations</span>

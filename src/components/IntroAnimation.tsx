@@ -101,8 +101,8 @@ export const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) =>
                 🌿
               </div>
             </motion.div>
-            <h1 className="text-5xl md:text-7xl font-serif font-bold text-[#1a1a1a] mb-4 tracking-tight">
-              Green Haven
+            <h1 className="text-4xl md:text-6xl font-serif font-bold text-[#1a1a1a] mb-4 tracking-tight">
+              Shashi Kumar Resort
             </h1>
             <p className="text-xl md:text-2xl font-serif italic text-[#5A5A40] tracking-wide">
               Village Celebration Resort

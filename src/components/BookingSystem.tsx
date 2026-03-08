@@ -72,7 +72,7 @@ export const BookingSystem: React.FC = () => {
                 <div>
                   <h2 className="text-3xl font-serif font-bold mb-4">Your Village Escape</h2>
                   <p className="text-white/70 text-sm leading-relaxed">
-                    Select your dates and preferences to begin your celebration at Green Haven.
+                    Select your dates and preferences to begin your celebration at Shashi Kumar Resort.
                   </p>
                 </div>
 

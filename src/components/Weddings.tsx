@@ -73,10 +73,14 @@ export const Weddings: React.FC = () => {
             </div>
 
             <div className="pt-10">
-              <button className="bg-white text-[#1a1a1a] px-10 py-5 rounded-full font-bold hover:bg-pink-100 transition-colors shadow-2xl flex items-center gap-2">
+              <a 
+                href="/first_website/brochure.pdf"
+                download="Shashi_Kumar_Resort_Brochure.pdf"
+                className="inline-flex bg-white text-[#1a1a1a] px-10 py-5 rounded-full font-bold hover:bg-pink-100 transition-colors shadow-2xl items-center gap-2"
+              >
                 Download Wedding Brochure
                 <Star size={18} />
-              </button>
+              </a>
             </div>
           </motion.div>
 

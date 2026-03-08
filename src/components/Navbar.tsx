@@ -31,7 +31,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
         <div className="w-10 h-10 bg-[#5A5A40] rounded-full flex items-center justify-center text-white text-xl">
           🌿
         </div>
-        <span className="font-serif font-bold text-xl tracking-tight text-[#1a1a1a]">Green Haven</span>
+        <span className="font-serif font-bold text-xl tracking-tight text-[#1a1a1a]">Shashi Kumar Resort</span>
       </motion.div>
 
       {/* Desktop Nav */}
@@ -57,9 +57,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
       </div>
 
       <div className="flex items-center gap-4 pointer-events-auto">
-        <button className="hidden md:flex items-center gap-2 bg-[#5A5A40] text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-[#4a4a34] transition-colors shadow-md">
-          Book Now
-        </button>
+        {/* Removed Book Now button based on request */}
         <button 
           className="md:hidden w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md border border-black/5"
           onClick={() => setIsOpen(!isOpen)}
@@ -93,9 +91,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
               </button>
             ))}
             <div className="h-px bg-black/5 my-2" />
-            <button className="w-full bg-[#5A5A40] text-white py-4 rounded-2xl font-medium">
-              Book Your Stay
-            </button>
+            {/* Removed mobile book button */}
           </motion.div>
         )}
       </AnimatePresence>
