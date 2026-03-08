@@ -10,6 +10,7 @@ import { Gallery } from './components/Gallery';
 import { Contact, Footer } from './components/Contact';
 import { BookingSystem } from './components/BookingSystem';
 import { AncientScrollBackground } from './components/AncientScrollBackground';
+import { AdminDashboard } from './components/AdminDashboard';
 
 export default function App() {
   const [showIntro, setShowIntro] = useState(true);
@@ -59,7 +60,7 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {!showIntro && (
+      {!showIntro && window.location.pathname !== '/admin' && (
         <AncientScrollBackground>
           <motion.div
             initial={{ opacity: 0 }}
@@ -81,6 +82,8 @@ export default function App() {
           </motion.div>
         </AncientScrollBackground>
       )}
+
+      {window.location.pathname === '/admin' && <AdminDashboard />}
     </div>
   );
 }
