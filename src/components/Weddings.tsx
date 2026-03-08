@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Heart, Star, Users, MapPin } from 'lucide-react';
+import { GradientButton } from './ui/gradient-button';
 
 export const Weddings: React.FC = () => {
   return (
@@ -73,14 +74,15 @@ export const Weddings: React.FC = () => {
             </div>
 
             <div className="pt-10">
-              <a 
-                href="/first_website/brochure.pdf"
-                download="Shashi_Kumar_Resort_Brochure.pdf"
-                className="inline-flex bg-white text-[#1a1a1a] px-10 py-5 rounded-full font-bold hover:bg-pink-100 transition-colors shadow-2xl items-center gap-2"
-              >
-                Download Wedding Brochure
-                <Star size={18} />
-              </a>
+              <GradientButton asChild className="gap-2 px-10">
+                <a 
+                  href="/first_website/brochure.pdf"
+                  download="Shashi_Kumar_Resort_Brochure.pdf"
+                >
+                  Download Wedding Brochure
+                  <Star size={18} />
+                </a>
+              </GradientButton>
             </div>
           </motion.div>
 

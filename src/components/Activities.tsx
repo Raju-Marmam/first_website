@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Waves, Trophy, Camera, Trees, ArrowRight } from 'lucide-react';
+import { GradientButton } from './ui/gradient-button';
 
 const activities = [
   {
@@ -47,10 +48,10 @@ export const Activities: React.FC = () => {
               From high-energy sports to peaceful relaxation, we have something for everyone.
             </p>
           </div>
-          <button className="flex items-center gap-2 text-[#5A5A40] font-bold group">
+          <GradientButton variant="variant" className="gap-2 group">
             View All Activities
             <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-          </button>
+          </GradientButton>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

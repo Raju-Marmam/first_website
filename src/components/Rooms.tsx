@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Bed, Bath, Wind, Tv, Coffee, ArrowRight } from 'lucide-react';
 import { cn } from '../utils/cn';
+import { GradientButton } from './ui/gradient-button';
 
 const rooms = [
   {
@@ -191,9 +192,9 @@ export const Rooms: React.FC = () => {
                     <p className="text-xs text-[#1a1a1a]/40 uppercase tracking-widest mb-1">Starting from</p>
                     <p className="text-3xl font-serif font-bold text-[#1a1a1a]">{selectedRoom.price}</p>
                   </div>
-                  <button className="bg-[#5A5A40] text-white px-10 py-5 rounded-full font-bold shadow-xl hover:scale-105 transition-transform">
+                  <GradientButton onClick={() => window.dispatchEvent(new Event('openBooking'))}>
                     Book This Room
-                  </button>
+                  </GradientButton>
                 </div>
               </div>
             </motion.div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { ChevronRight, Play } from 'lucide-react';
+import { GradientButton } from './ui/gradient-button';
 
 export const Hero: React.FC = () => {
   return (
@@ -61,21 +62,20 @@ export const Hero: React.FC = () => {
             Experience the perfect blend of village charm and modern luxury. 
             Your dream destination for weddings, family getaways, and peaceful retreats.
           </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button 
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+            <GradientButton 
               onClick={() => window.dispatchEvent(new Event('openBooking'))}
-              className="group bg-[#5A5A40] text-white px-10 py-5 rounded-full text-lg font-medium hover:bg-[#4a4a34] transition-all shadow-xl flex items-center gap-2"
+              className="gap-2"
             >
               Check Availability
               <ChevronRight className="group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="flex items-center gap-3 text-[#1a1a1a] font-medium hover:text-[#5A5A40] transition-colors p-4">
-              <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-white transition-all">
-                <Play size={18} fill="currentColor" />
+            </GradientButton>
+            <GradientButton variant="variant" className="gap-3 group">
+              <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white transition-all text-white group-hover:text-black">
+                <Play size={14} fill="currentColor" />
               </div>
               Explore Resort
-            </button>
+            </GradientButton>
           </div>
         </motion.div>
       </div>

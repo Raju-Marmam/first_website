@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Phone, Mail, MapPin, MessageSquare, Instagram, Facebook, Youtube } from 'lucide-react';
+import { GradientButton } from './ui/gradient-button';
 
 export const Contact: React.FC = () => {
   return (
@@ -95,9 +96,9 @@ export const Contact: React.FC = () => {
                 <label className="text-[10px] uppercase tracking-widest text-[#1a1a1a]/40 font-bold">Message</label>
                 <textarea rows={4} className="w-full bg-[#f5f2ed] border-none rounded-2xl px-6 py-4 outline-none focus:ring-2 focus:ring-[#5A5A40] resize-none" />
               </div>
-              <button className="w-full bg-[#5A5A40] text-white py-5 rounded-2xl font-bold text-lg shadow-xl hover:scale-[1.02] transition-transform">
+              <GradientButton className="w-full">
                 Send Message
-              </button>
+              </GradientButton>
             </form>
           </motion.div>
         </div>

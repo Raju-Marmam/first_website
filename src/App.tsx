@@ -9,6 +9,7 @@ import { Activities } from './components/Activities';
 import { Gallery } from './components/Gallery';
 import { Contact, Footer } from './components/Contact';
 import { BookingSystem } from './components/BookingSystem';
+import { AncientScrollBackground } from './components/AncientScrollBackground';
 
 export default function App() {
   const [showIntro, setShowIntro] = useState(true);
@@ -51,7 +52,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="bg-[#f5f2ed] selection:bg-[#5A5A40] selection:text-white">
+    <div className="bg-transparent selection:bg-[#5A5A40] selection:text-white">
       <AnimatePresence>
         {showIntro && (
           <IntroAnimation onComplete={() => setShowIntro(false)} />
@@ -59,24 +60,26 @@ export default function App() {
       </AnimatePresence>
 
       {!showIntro && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
-          <Navbar activeSection={activeSection} onNavigate={handleNavigate} />
-          
-          <main ref={scrollRef}>
-            {sections.map((section) => (
-              <div key={section.id} id={section.id}>
-                {section.component}
-              </div>
-            ))}
-          </main>
+        <AncientScrollBackground>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <Navbar activeSection={activeSection} onNavigate={handleNavigate} />
+            
+            <main ref={scrollRef}>
+              {sections.map((section) => (
+                <div key={section.id} id={section.id}>
+                  {section.component}
+                </div>
+              ))}
+            </main>
 
-          <Footer />
-          <BookingSystem />
-        </motion.div>
+            <Footer />
+            <BookingSystem />
+          </motion.div>
+        </AncientScrollBackground>
       )}
     </div>
   );
