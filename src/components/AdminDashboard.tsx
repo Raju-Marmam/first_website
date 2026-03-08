@@ -24,6 +24,11 @@ export const AdminDashboard: React.FC = () => {
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loginUsername, setLoginUsername] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
+  const [loginError, setLoginError] = useState('');
+
   const fetchBookings = () => {
     setIsLoading(true);
     // Simulate network delay
@@ -47,8 +52,33 @@ export const AdminDashboard: React.FC = () => {
   };
 
   useEffect(() => {
-    fetchBookings();
+    // Check if properly authenticated in sessionStorage to persist login across minor reloads
+    const loggedIn = sessionStorage.getItem('ghvr_admin_auth');
+    if (loggedIn === 'true') {
+      setIsAuthenticated(true);
+      fetchBookings();
+    }
   }, []);
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (loginUsername === 'Admin' && loginPassword === 'Garuda@123') {
+      setIsAuthenticated(true);
+      setLoginError('');
+      sessionStorage.setItem('ghvr_admin_auth', 'true');
+      fetchBookings();
+    } else {
+      setLoginError('Invalid Administrator Credentials');
+    }
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    sessionStorage.removeItem('ghvr_admin_auth');
+    setLoginUsername('');
+    setLoginPassword('');
+    window.location.hash = ''; // Return to main site natively
+  };
 
   const handleStatusChange = (id: number, newStatus: string) => {
     try {
@@ -76,6 +106,80 @@ export const AdminDashboard: React.FC = () => {
     }
   };
 
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-[#f5f2ed] flex items-center justify-center p-6 font-sans relative overflow-hidden">
+        {/* Abstract Background for Login */}
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-30">
+          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[#5A5A40] rounded-full blur-[120px]" />
+          <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#2a2a1a] rounded-full blur-[150px]" />
+        </div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="w-full max-w-md bg-white rounded-[2rem] shadow-2xl overflow-hidden border border-black/5 relative z-10 p-10"
+        >
+          <div className="flex flex-col items-center mb-8">
+            <div className="w-16 h-16 bg-[#5A5A40] rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-[#5A5A40]/20">
+              <ShieldCheck size={32} />
+            </div>
+            <h1 className="text-3xl font-serif font-bold text-[#1a1a1a] mb-2">Admin Portal</h1>
+            <p className="text-[#1a1a1a]/60 text-center text-sm">Sign in to manage resort bookings</p>
+          </div>
+
+          <form onSubmit={handleLogin} className="space-y-6">
+            <div>
+              <label className="block text-xs font-bold text-[#1a1a1a]/60 uppercase tracking-widest mb-2">Username</label>
+              <input 
+                type="text" 
+                value={loginUsername}
+                onChange={(e) => setLoginUsername(e.target.value)}
+                className="w-full bg-[#f5f2ed] p-4 rounded-xl text-[#1a1a1a] focus:ring-2 focus:ring-[#5A5A40] outline-none transition-shadow"
+                required
+              />
+            </div>
+            
+            <div>
+              <label className="block text-xs font-bold text-[#1a1a1a]/60 uppercase tracking-widest mb-2">Password</label>
+              <input 
+                type="password" 
+                value={loginPassword}
+                onChange={(e) => setLoginPassword(e.target.value)}
+                className="w-full bg-[#f5f2ed] p-4 rounded-xl text-[#1a1a1a] focus:ring-2 focus:ring-[#5A5A40] outline-none transition-shadow"
+                required
+              />
+            </div>
+
+            {loginError && (
+              <motion.p 
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                className="text-red-500 text-sm font-medium text-center bg-red-50 py-3 rounded-xl"
+              >
+                {loginError}
+              </motion.p>
+            )}
+
+            <button 
+              type="submit" 
+              className="w-full bg-[#1a1a1a] hover:bg-[#5A5A40] text-white p-4 justify-center items-center flex rounded-xl font-bold transition-colors shadow-lg shadow-black/10"
+            >
+              Sign In Securely
+            </button>
+            <button
+               type="button"
+               onClick={() => window.location.hash = ''} 
+               className="w-full bg-transparent hover:bg-black/5 text-[#1a1a1a]/60 hover:text-[#1a1a1a] p-4 justify-center items-center flex rounded-xl font-bold transition-colors"
+             >
+               Return to Website
+             </button>
+          </form>
+        </motion.div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#f5f2ed] p-6 font-sans">
       <div className="max-w-7xl mx-auto">
@@ -98,9 +202,9 @@ export const AdminDashboard: React.FC = () => {
               <RefreshCcw size={16} className={isLoading ? "animate-spin" : ""} />
               Refresh Data
             </button>
-            <button onClick={() => window.location.hash = ''} className="flex items-center gap-2 px-4 py-2 text-red-600 hover:bg-red-50 rounded-xl transition-colors font-medium text-sm">
+            <button onClick={handleLogout} className="flex items-center gap-2 px-4 py-2 text-red-600 hover:bg-red-50 rounded-xl transition-colors font-medium text-sm">
               <LogOut size={16} />
-              Exit to Site
+              Secure Logout
             </button>
           </div>
         </div>

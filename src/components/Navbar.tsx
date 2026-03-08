@@ -11,6 +11,14 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
+  const handleNavigate = (sectionId: string) => {
+    if (sectionId === 'admin') {
+      window.location.hash = '#/admin';
+      return;
+    }
+    onNavigate(sectionId);
+  };
+
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'rooms', label: 'Stays' },
@@ -18,6 +26,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
     { id: 'activities', label: 'Activities' },
     { id: 'gallery', label: 'Gallery' },
     { id: 'contact', label: 'Contact' },
+    { id: 'admin', label: 'Admin' },
   ];
 
   return (
