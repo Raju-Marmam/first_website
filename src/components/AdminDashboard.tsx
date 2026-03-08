@@ -98,10 +98,10 @@ export const AdminDashboard: React.FC = () => {
               <RefreshCcw size={16} className={isLoading ? "animate-spin" : ""} />
               Refresh Data
             </button>
-            <a href="/" className="flex items-center gap-2 px-4 py-2 text-red-600 hover:bg-red-50 rounded-xl transition-colors font-medium text-sm">
+            <button onClick={() => window.location.hash = ''} className="flex items-center gap-2 px-4 py-2 text-red-600 hover:bg-red-50 rounded-xl transition-colors font-medium text-sm">
               <LogOut size={16} />
               Exit to Site
-            </a>
+            </button>
           </div>
         </div>
 
