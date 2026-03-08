@@ -1,0 +1,44 @@
+@import "tailwindcss";
+@import "react-day-picker/dist/style.css";
+
+@theme {
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-sans antialiased text-[#1a1a1a] bg-[#f5f2ed];
+  }
+
+  h1, h2, h3, h4, .font-serif {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+}
+
+/* Custom Calendar Styling */
+.booking-calendar {
+  --rdp-cell-size: 40px;
+  --rdp-accent-color: #5A5A40;
+  --rdp-background-color: #f5f2ed;
+  margin: 0;
+}
+
+.rdp-day_selected, .rdp-day_selected:focus-visible, .rdp-day_selected:hover {
+  background-color: var(--rdp-accent-color) !react-important;
+  color: white !react-important;
+}
+
+.rdp-button:hover:not([disabled]):not(.rdp-day_selected) {
+  background-color: rgba(90, 90, 64, 0.1);
+}
